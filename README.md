@@ -9,7 +9,7 @@ Languages Utilized:
   <li>Python</li>
 </ul>
 
-Frameworks Utilized:
+Framework Utilized:
 <ul>
   <li>Flask</li>
 </ul>
