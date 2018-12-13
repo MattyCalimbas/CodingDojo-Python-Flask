@@ -1,6 +1,6 @@
 # CodingDojo-Python-Flask
 
-Projects within this repo are assignments and projects designed to teach both the basics of Python and the Flask microframework.|
+Projects within this repo are assignments designed to teach both the basics of Python and the Flask microframework.|
 
 Languages Utilized:
 <ul>
