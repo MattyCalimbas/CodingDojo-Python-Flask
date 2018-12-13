@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl"
+        crossorigin="anonymous"></script>
+    <title>Login and Registration</title>
+    <style>
+        ul {
+            list-style: none;
+            padding-left: 10px;
+            color:blue;
+          }
+    
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+
+        <div class="py-5 text-center">
+                <img class="d-block mx-auto" src="{{ url_for('static', filename='img/mlogo.png') }}" alt="" width="150">
+                <h1 class='mt-4'>Registration/Login</h1>
+                <p class="lead">Please submit valid information below</p>
+        </div>
+
+        <div class='row'>
+            
+            <div class="col-md-8">
+                <h3 class='m-2'>Registration:</h3>
+                {% with messages = get_flashed_messages(with_categories=true, category_filter=['registration']) %}
+                    {% if messages %}
+                        <ul class=flashes>
+                        {% for category, message in messages %}
+                            <li class="{{ registration }}">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+                <form action='/registration' method='post'>
+                    <div class="row">
+                        <div class='col-md-6 mb-2'>
+                            <label for='first_name'>First Name:</label>
+                            <input type='text' class='form-control' name='first_name'>
+                        </div>
+
+                        <div class='col-md-6 mb-2'>
+                            <label for='last_name'>Last Name:</label>
+                            <input type='text' class='form-control' name='last_name'>
+                        </div>
+                    </div>
+
+                    <div class='mb-3'>
+                        <label for="email">Email</label>
+                        <input type="text" class='form-control' name='email'>
+                    </div>
+
+                    <div class='mb-3'>
+                        <label for="password">Password</label>
+                        <input type="password" class='form-control' name='password' placeholder='At Least 8 Characters Long'>
+                    </div>
+
+                    <div class='mb-3'>
+                        <label for="confirm">Confirm</label>
+                        <input type="password" class='form-control' name='confirm_pw' placeholder='Confirm Password'>
+                    </div>
+                    
+                    <button class='btn btn-primary btn-lg' type='submit'>Submit</button>
+                
+                </form>
+            </div>
+
+            <div class="col-md-4 mb-2">
+                <h3 class='m-2'>Login:</h3>
+                {% with messages = get_flashed_messages(with_categories=true, category_filter=['login']) %}
+                    {% if messages %}
+                        <ul class=flashes>
+                        {% for category, message in messages %}
+                            <li class="{{ login }}">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+                <form action='/login' method='post'>
+                    <div class='mb-2'>
+                        <label for="email">Email</label>
+                        <input type="text" class='form-control' name='email'>
+                    </div>    
+                    
+                    <div class='mb-2'>
+                        <label for="password">Password</label>
+                        <input type="password" class='form-control' name='password' placeholder='Password'>
+                    </div>
+                    <button class='btn btn-success' type='submit'>Login</button>
+                </form>
+            </div>
+        </div>
+        
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">&copy; 2017-2018 MattCal Development Group</p>
+            <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+            </ul>
+        </footer>
+        
+    </div>
+</body>
+
+</html>
